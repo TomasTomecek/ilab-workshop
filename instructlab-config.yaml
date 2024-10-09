@@ -1,0 +1,104 @@
+chat:
+  context: default
+  greedy_mode: false
+  logs_dir: /var/home/instruct/.local/share/instructlab/chatlogs
+  max_tokens: null
+  model: /var/home/instruct/.cache/instructlab/models/granite-7b-redhat-lab
+  session: null
+  vi_mode: false
+  visible_overflow: true
+evaluate:
+  base_branch: null
+  base_model: /var/home/instruct/.cache/instructlab/models/granite-7b-starter
+  branch: null
+  gpus: 4
+  mmlu:
+    batch_size: auto
+    few_shots: 5
+  mmlu_branch:
+    tasks_dir: /var/home/instruct/.local/share/instructlab/datasets
+  model: null
+  mt_bench:
+    judge_model: /var/home/instruct/.cache/instructlab/models/prometheus-8x7b-v2-0
+    max_workers: 16
+    output_dir: /var/home/instruct/.local/share/instructlab/internal/eval_data
+  mt_bench_branch:
+    taxonomy_path: /var/home/instruct/.local/share/instructlab/taxonomy
+general:
+  debug_level: 0
+  log_level: INFO
+generate:
+  chunk_word_count: 1000
+  model: /var/home/instruct/.cache/instructlab/models/TheBloke/Mixtral-8x7B-Instruct-v0.1-GPTQ
+  num_cpus: 10
+  output_dir: /var/home/instruct/.local/share/instructlab/datasets
+  pipeline: /usr/share/instructlab/sdg/pipelines/agentic
+  prompt_file: /var/home/instruct/.local/share/instructlab/internal/prompt.txt
+  # Number of instructions to generate for each seed example
+  sdg_scale_factor: 5
+  seed_file: /var/home/instruct/.local/share/instructlab/internal/seed_tasks.json
+  taxonomy_base: empty
+  taxonomy_path: /var/home/instruct/.local/share/instructlab/taxonomy
+  teacher:
+    backend: vllm
+    chat_template: tokenizer
+    host_port: 127.0.0.1:8000
+    llama_cpp:
+      gpu_layers: -1
+      llm_family: ''
+      max_ctx_size: 4096
+    model_path: /var/home/instruct/.cache/instructlab/models/TheBloke/Mixtral-8x7B-Instruct-v0.1-GPTQ
+    vllm:
+      gpus: 4
+      llm_family: mixtral
+      max_startup_attempts: null
+      vllm_args:
+      - --dtype
+      - bfloat16
+serve:
+  backend: vllm
+  chat_template: auto
+  host_port: 127.0.0.1:8000
+  llama_cpp:
+    gpu_layers: -1
+    llm_family: ''
+    max_ctx_size: 4096
+  model_path: /var/home/instruct/.cache/instructlab/models/granite-7b-redhat-lab
+  vllm:
+    gpus: null
+    llm_family: ''
+    max_startup_attempts: null
+    vllm_args:
+    - --tensor-parallel-size
+    - '4'
+train:
+  additional_args:
+    deepspeed_cpu_offload_optimizer_pin_memory: true
+    deepspeed_cpu_offload_optimizer_ratio: 1
+    learning_rate: 2e-5
+    lora_alpha: 32
+    lora_dropout: 0.1
+    warmup_steps: 25
+  checkpoint_at_epoch: true
+  ckpt_output_dir: /var/home/instruct/.local/share/instructlab/checkpoints
+  data_output_dir: /var/home/instruct/.local/share/instructlab/internal
+  data_path: /var/home/instruct/.local/share/instructlab/datasets
+  deepspeed_cpu_offload_optimizer: true
+  effective_batch_size: 128
+  is_padding_free: true
+  lora_quantize_dtype: null
+  lora_rank: 0
+  max_batch_len: 30000
+  max_seq_len: 4096
+  model_path: /var/home/instruct/.cache/instructlab/models/granite-7b-starter
+  nproc_per_node: 4
+  num_epochs: 8
+  phased_mt_bench_judge: /var/home/instruct/.cache/instructlab/models/prometheus-8x7b-v2-0
+  phased_phase1_effective_batch_size: 128
+  phased_phase1_num_epochs: 10
+  phased_phase1_samples_per_save: 0
+  phased_phase2_effective_batch_size: 3840
+  phased_phase2_num_epochs: 10
+  phased_phase2_samples_per_save: 0
+  save_samples: 1000
+version: 1.0.0
