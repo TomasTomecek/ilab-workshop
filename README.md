@@ -45,7 +45,8 @@ Create users, sudoers (podman only), ilab config.
    `cd ~/.local/share/instructlab/datasets/`  
    It took ~50 minutes with the one above.  
 
-4. Train
+4. Train  
+   `ilab model train --model-path instructlab/granite-7b-lab --data-path ~/.local/share/instructlab/datasets/knowledge_train_msgs….jsonl`
 
 5. Serve  
    Let people SSH only at this point.  
