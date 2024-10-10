@@ -4,6 +4,13 @@ Materials for Czech InstructLab workshop for [Dny AI](https://dny.ai/).
 
 [Grant Shipley](https://www.youtube.com/@gshipley21) did an amazing demo of what we'll do here: https://www.youtube.com/watch?v=H_dUADNfQxg
 He's using [this config](https://github.com/rhai-code/backToTheFuture/blob/main/L4_x4.yaml) for training with quantized mistral 8x7B.
+We have the complete InstructLab config here as `instructlab-config.yaml`.
+
+There are 2 great official resources that you can follow:
+1. The official [README of InstructLab](https://github.com/instructlab/instructlab?tab=readme-ov-file#-getting-started).
+2. [Knowledge to the open source Granite model using
+   InstructLab](https://developer.ibm.com/tutorials/awb-contributing-knowledge-instructlab-granite/)
+   article at IBM Developer portal.
 
 ## Official workshop
 
