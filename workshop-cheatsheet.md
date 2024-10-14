@@ -29,4 +29,6 @@
    * `ilab model train ...`
 
 5. Serve
+   * `ilab model serve`
+   * `ilab model chat`
 
